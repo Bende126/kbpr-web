@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get :for_groups, on: :collection
     get :for_group, on: :collection
     get :for_group_member, on: :collection
+    get :for_users, on: :collection
   end
 
   get '/statistics_users', to: 'statistics#for_user_index', as: :statistics_users

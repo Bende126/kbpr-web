@@ -7,6 +7,10 @@ class StatisticPolicy < ApplicationPolicy
     member?
   end
 
+  def for_users?
+    member?
+  end
+
   def for_user_index?
     member?
   end

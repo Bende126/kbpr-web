@@ -1,6 +1,6 @@
 class StatisticsController < ApplicationController
 
-  before_action :set_fiscal_period, only: [:for_groups, :for_user_index, :for_user]
+  before_action :set_fiscal_period, only: [:for_groups, :for_users, :for_user_index, :for_user]
 
   def for_groups
     @order_items = OrderItem.joins(:order).includes(order: :group)
@@ -17,6 +17,30 @@ class StatisticsController < ApplicationController
       @groups_with_items[group][item] = @groups_with_items[group][item] + order_item.quantity
     end
     file_name = "kbpr_körös_nyomtatások_#{@fiscal_period.start_at.strftime('%F')}_#{@fiscal_period.end_at.strftime('%F')}.csv"
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=#{file_name}"
+      end
+    end
+  end
+
+  def for_users
+    @order_items = OrderItem.joins(:order).includes(order: :group)
+                            .where(orders: { state: :complete })
+                            .where('orders.finalized_at BETWEEN :start and :end',
+                                   start: @fiscal_period.start_at.beginning_of_day,
+                                   end: @fiscal_period.end_at.end_of_day)
+      @users = {}
+      @order_items.each do |order_item|
+        user = order_item.order.completed_by
+        item = order_item.item
+        @users[user] ||= {}
+        @users[user][item] ||= 0
+        @users[user][item] = @users[user][item] + order_item.quantity
+    end
+    file_name = "kbpr_egyéni_nyomtatások_#{@fiscal_period.start_at.strftime('%F')}_#{@fiscal_period.end_at.strftime('%F')}.csv"
     respond_to do |format|
       format.html
       format.csv do

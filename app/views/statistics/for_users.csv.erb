@@ -1,0 +1,12 @@
+<% require 'csv' %>
+<% @items = Item.all %>
+<% header = ['Név','Összesen nyomtatva'] + @items.pluck(:name) %>
+<%= CSV.generate_line header, row_sep: '' %>
+<% @users.each do |user, items2| %>
+  <% line = [user.name] %>
+  <% line << "none" %>
+  <% items2.each do |item, quantity| %>
+  <% line << quantity %>
+ <% end %>
+  <%= CSV.generate_line line , row_sep: ''%>
+<% end %>
