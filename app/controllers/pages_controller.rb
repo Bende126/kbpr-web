@@ -7,6 +7,10 @@ class PagesController < ApplicationController
 
   end
 
+  def member
+
+  end
+
   def profile
     @user = current_user
   end

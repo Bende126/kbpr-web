@@ -7,6 +7,10 @@ class PagePolicy < ApplicationPolicy
     super
   end
 
+  def member?
+    super
+  end
+
   def profile?
     basic?
   end

@@ -1,0 +1,10 @@
+<h1 class="font-bold text-4xl mb-4">Felhasználói panel</h1>
+<p> Üdvözlünk a felhasználói oldalon!</p>
+<h2 class="font-bold text-3xl mb-8 mt-8">Felhasználói lehetőségek</h2>
+
+<div class="grid md:grid-cols-4	gap-4 pb-8">
+  <%= authorized_link_to 'KWC redelések', kwcs_path, class: 'btn text-center' %>
+  <%= authorized_link_to 'Jelenléti ív', kwcs_path, class: 'btn text-center' %>
+  <%= authorized_link_to 'Szavazások', kwcs_path, class: 'btn text-center' %>
+</div>
+

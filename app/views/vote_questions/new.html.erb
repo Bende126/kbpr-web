@@ -1,0 +1,7 @@
+<div class="mx-auto w-full">
+  <h1 class="font-bold text-4xl">Új szavazás</h1>
+
+  <%= render "form", vote_question: @vote_question %>
+
+  <%= authorized_link_to 'Vissza a szavazásokhoz', vote_questions_path, class: "btn-outline" %>
+</div>

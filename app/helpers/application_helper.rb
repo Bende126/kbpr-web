@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def member?
-    current_user&.admin? || current_user&.member?
+    current_user&.member? || current_user&.admin?
   end
 
   def authorized_link_to(name = nil, options = nil, html_options = nil, &block)

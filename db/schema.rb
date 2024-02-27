@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_152041) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_19_140131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -134,6 +134,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_152041) do
     t.boolean "member", default: false
     t.string "role", default: "basic"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "vote_questions", force: :cascade do |t|
+    t.string "title"
+    t.datetime "ends_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.boolean "vote_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_votes_on_question_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

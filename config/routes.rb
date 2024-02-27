@@ -14,12 +14,14 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :funky_texts
+  resources :vote_questions
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :users, except: :destroy
 
   resources :pages do
     get :admin, on: :collection
+    get :member, on: :collection
     get :profile, on: :collection
   end
   resources :kwcs, only: [:index] do
