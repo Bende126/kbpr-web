@@ -138,7 +138,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_19_140131) do
 
   create_table "vote_questions", force: :cascade do |t|
     t.string "title"
-    t.datetime "ends_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "start_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,7 +11,8 @@ class CreateVotingSystem < ActiveRecord::Migration[7.0]
     end
     create_table :vote_questions do |t|
       t.string "title"
-      t.datetime "ends_at", null: false
+      t.datetime "end_at", null: false
+      t.datetime "start_at", null: false
 
       t.timestamps
     end

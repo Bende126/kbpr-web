@@ -66,6 +66,6 @@ class VoteQuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_question_params
-      params.require(:vote_question).permit(:title, :content)
+      params.require(:vote_question).permit(:title, :content, :start_at, :end_at)
     end
 end
