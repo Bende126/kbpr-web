@@ -2,11 +2,26 @@
   <div class="mx-auto">
     <%= render @vote_question %>
 
-    <div class="flex items-center gap-4 mb-8" style="flex-wrap: wrap">
-      <%= authorized_link_to 'Vissza a szövegekhez', vote_questions_path, class: "btn-outline" %>
-      <%= authorized_link_to 'Szerkesztés', edit_vote_question_path(@vote_question), class: 'btn' %>
-      <%= button_to 'Törlés', vote_question_path(@vote_question), method: :delete, class: "btn-red",
-                    form_class: 'inline ml-auto' %>
+    <div class="bg-secondary shadow rounded-lg max-w-full py-6 px-5 mb-12">
+      <div class="flex justify-end gap-4 mb-8">
+        <%= authorized_link_to 'Vissza a szövegekhez', vote_questions_path, class: "btn-outline" %>
+
+        <%= authorized_link_to 'Szerkesztés', edit_vote_question_path(@vote_question), class: 'btn' %>
+        <%= button_to 'Törlés', vote_question_path(@vote_question), method: :delete, class: "btn-red",
+                    form_class: 'inline ml-auto' if current_user&.admin? %>
+
+        <%= button_to 'Igen', votes_path, method: :post, params: {
+        'vote[vote_type]'=> true, 
+        'vote[user_id]'=> current_user.id,
+        'vote[vote_question_id]'=> @vote_question.id
+        }, form: { "data-type" => "json" }, class: "btn-green"%>
+
+        <%= button_to 'Nem',  votes_path, method: :post, params: {
+        'vote[vote_type]'=> false, 
+        'vote[user_id]'=> current_user.id,
+        'vote[vote_question_id]'=> @vote_question.id
+        }, form: { "data-type" => "json" }, class: "btn-red"%>
+      </div>
     </div>
   </div>
 </div>

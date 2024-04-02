@@ -11,13 +11,14 @@
     </div>
   <% end %>
 
-  <div class="mt-6 bg-secondary rounded-md m-auto p-4 items-center">
-    <div class="row max-w-sm">
-      <%= form.label :title, class: 'label' %>
-      <%= form.text_field :title, class: "text-area" %>
-    </div>
+  <div class="mt-6 bg-secondary rounded-md m-auto p-4">
+    <div class="justify-center">
 
-    <div class="">
+      <div class="row max-w-sm">
+        <%= form.label :title, class: 'label' %>
+        <%= form.text_field :title, class: "text-area" %>
+      </div>
+
       <div class="row max-w-sm">
         <%= form.label :start_at %>
         <%= form.datetime_field :start_at, class: "datetime-field" %>
@@ -27,12 +28,8 @@
         <%= form.label :end_at %>
         <%= form.datetime_field :end_at, class: "datetime-field" %>
       </div>
-    </div>
-
-    <div class="row">
 
     </div>
-  </div>
 
   <div class="row">
     <%= form.label :content, class: 'label leading-10' %>

@@ -117,3 +117,13 @@ hu:
         start_at: Kezdési idő
         end_at: Befejezési idő
         name: Név
+      funky_text:
+        rich_text_content: :activerecord.models.rich_text_content  #g
+        title: Cím  #g
+        content: Tartalom
+      vote_question:
+        rich_text_content: :activerecord.models.rich_text_content  #g
+        title: Cím  #g
+        content: Tartalom
+        start_at: Kezdési idő
+        end_at: Befejezési idő

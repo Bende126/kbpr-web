@@ -14,5 +14,8 @@
     <p class="text-white leading-snug md:leading-normal pb-7">
       <%= vote_question.content %>
     </p>
+      <div class="flex justify-end">
+        <%= authorized_link_to 'Szavazás', vote_question_path(vote_question), class: 'btn' if action_name == 'index' && (current_user&.member? || current_user&.admin?) %>
+      </div>
   </div>
 </div>

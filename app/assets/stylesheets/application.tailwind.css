@@ -31,6 +31,10 @@
         @apply btn bg-red-500 border-red-500;
     }
 
+    .btn-green {
+        @apply btn bg-green-500 border-green-500;
+    }
+
 
     .nav-item {
         @apply p-4 font-bold

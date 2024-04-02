@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_19_140131) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_01_130947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -146,12 +146,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_19_140131) do
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
+    t.bigint "vote_question_id", null: false
     t.boolean "vote_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_votes_on_question_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["vote_question_id"], name: "index_votes_on_vote_question_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
