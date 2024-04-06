@@ -127,3 +127,6 @@ hu:
         content: Tartalom
         start_at: Kezdési idő
         end_at: Befejezési idő
+      vote:
+        vote_type: Szavazás típusa #g
+

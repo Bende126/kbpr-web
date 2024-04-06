@@ -25,7 +25,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to vote_url(@vote), notice: "A szavazást sikeresen létrehoztuk!" }
+        format.html { redirect_to vote_question_url(@vote.vote_question_id), notice: "Sikeresen szavaztál!" }
         format.json { render :show, status: :created, location: @vote }
       else
         format.html { render :new, status: :unprocessable_entity }
