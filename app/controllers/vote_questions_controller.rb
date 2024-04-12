@@ -61,7 +61,9 @@ class VoteQuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vote_question
       @vote_question = VoteQuestion.find(params[:id])
+      @votes = Vote.where(vote_question_id: params[:id])
       authorize @vote_question
+      authorize @votes
     end
 
     # Only allow a list of trusted parameters through.

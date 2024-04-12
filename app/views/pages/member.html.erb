@@ -4,7 +4,8 @@
 
 <div class="grid md:grid-cols-4	gap-4 pb-8">
   <%= authorized_link_to 'KWC redelések', kwcs_path, class: 'btn text-center' %>
-  <%= authorized_link_to 'Jelenléti ív', kwcs_path, class: 'btn text-center' %>
   <%= authorized_link_to 'Szavazások', vote_questions_path, class: 'btn text-center' %>
+  <%= authorized_link_to 'Körös statisztikák', for_groups_statistics_path, class: 'btn text-center' %>
+  <%= authorized_link_to 'Felhasználói stat.', statistics_users_path, class: 'btn text-center' %>
+  <%= authorized_link_to 'Költési időszakok', fiscal_periods_path, class: 'btn text-center' %>
 </div>
-
